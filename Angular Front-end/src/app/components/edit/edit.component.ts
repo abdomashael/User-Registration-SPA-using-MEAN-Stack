@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from '../../services/users.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class EditComponent implements OnInit {
   mail: string;
   id: number;
 
-  constructor(private router: ActivatedRoute, private usersService: UsersService) {
+  constructor(private router: ActivatedRoute, private usersService: UsersService,private navRouter:Router) {
   }
 
   ngOnInit(): void {
@@ -33,11 +33,13 @@ export class EditComponent implements OnInit {
 
   editUser($event: MouseEvent): void {
     const user = {
-      name: this.name,
+      username: this.name,
       age: this.age,
-      mail: this.mail
+      email: this.mail
     };
 
-    this.usersService.editUser(this.id, user);
+    this.usersService.editUser(this.id, user).subscribe(()=>{
+      this.navRouter.navigateByUrl("")
+    });
   }
 }

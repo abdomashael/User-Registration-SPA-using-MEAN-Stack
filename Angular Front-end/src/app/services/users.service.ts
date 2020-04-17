@@ -22,8 +22,7 @@ export class UsersService {
   }
 
   addUser(user): any {
-    console.log(user)
-    this.httpClient.post(this.basicURL,JSON.stringify(user))
+    return this.httpClient.post(this.basicURL,user);
   }
 
   deleteUserById(id: number): void {
@@ -31,11 +30,13 @@ export class UsersService {
     this.users.splice(idx, 1);
   }
 
-  editUser(id: number, user: { mail: string; name: string; age: string }): void {
-    const idx = this.users.indexOf(this.getUserById(id));
-    this.users[idx].id = id;
-    this.users[idx].name = user.name;
-    this.users[idx].age = user.age;
-    this.users[idx].mail = user.mail;
+  editUser(userID: any, user: { email: string; username: string; age: string }): any {
+
+    return this.httpClient.patch(`${this.basicURL}${userID}`,user)
+    // const idx = this.users.indexOf(this.getUserById(id));
+    // this.users[idx].id = id;
+    // this.users[idx].name = user.name;
+    // this.users[idx].age = user.age;
+    // this.users[idx].mail = user.mail;
   }
 }

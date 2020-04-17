@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UsersService} from '../../services/users.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-user',
@@ -13,7 +14,8 @@ export class AddUserComponent implements OnInit {
   mail: string;
 
 
-  constructor(private usersService: UsersService) {
+
+  constructor(private usersService: UsersService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,6 +27,9 @@ export class AddUserComponent implements OnInit {
       age: this.age,
       email: this.mail
     };
-    this.usersService.addUser(newUser);
+    this.usersService.addUser(newUser).subscribe((data)=>{
+      //return to list users after add new user to db
+      this.router.navigateByUrl("")
+    });
   }
 }
