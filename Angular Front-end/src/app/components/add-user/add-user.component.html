@@ -1,0 +1,21 @@
+<!--<form class="p-2 m-2">-->
+  <div class="md-form">
+    <input mdbInput type="text" name="text" [(ngModel)]="name" id="name" class="form-control">
+    <label for="name" class="">User Name</label>
+  </div>
+  <div class="md-form">
+    <input mdbInput type="number" name="text" [(ngModel)]="age" id="age" class="form-control" min="10" max="70">
+    <label for="age" class="">Age</label>
+<!--    <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Input invalid age must be between 10 and 70</mdb-error>-->
+  </div>
+  <div class="md-form">
+    <input mdbInput mdbValidate name="email" type="email" id="mail" class="form-control pb-0  " [(ngModel)]="mail" #input="ngModel" required pattern="[^ @]*@[^ @]*">
+    <label for="mail">Email</label>
+    <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Input invalid</mdb-error>
+    <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Input valid</mdb-success>
+
+  </div>
+
+  <button mdbBtn color="info"  rounded="true" block="true" class="my-5 waves-effect z-depth-0" mdbWavesEffect
+          type="button" (click)="addUser($event)" routerLink="">ADD</button>
+<!--</form>-->

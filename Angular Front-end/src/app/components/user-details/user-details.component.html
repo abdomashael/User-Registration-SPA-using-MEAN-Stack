@@ -1,0 +1,25 @@
+<mdb-card class="m-5">
+  <!--Card content-->
+
+  <mdb-card-header>
+    User Details
+  </mdb-card-header>
+
+  <mdb-card-body>
+    <mdb-card-body>
+      <!--Title-->
+      <mdb-card-title>
+        <h4>{{user.username}}</h4>
+      </mdb-card-title>
+      <mdb-card-text>
+        <label>Age : {{user.age}} </label>
+        <br>
+        <label>Email : {{user.email}}</label>
+      </mdb-card-text>
+    </mdb-card-body>
+  </mdb-card-body>
+  <mdb-card-footer>
+    <a routerLink="/userdetails/{{user._id}}/edit" mdbBtn color="primary" mdbWavesEffect>Edit</a>
+    <a routerLink="" mdbBtn color="red" mdbWavesEffect (click)="deleteUser($event)">Delete</a>
+  </mdb-card-footer>
+</mdb-card>

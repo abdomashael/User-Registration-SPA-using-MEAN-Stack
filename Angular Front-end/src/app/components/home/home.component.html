@@ -1,0 +1,7 @@
+<table mdbTable striped="true">
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td><a routerLink="/userdetails/{{user._id}}">{{user.username}}</a></td>
+  </tr>
+  </tbody>
+</table>
