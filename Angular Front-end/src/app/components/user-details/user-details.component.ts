@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from '../../services/users.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class UserDetailsComponent implements OnInit {
 
   user:any;
 
-  constructor(private router: ActivatedRoute, private usersService: UsersService) {
+  constructor(private router: ActivatedRoute, private usersService: UsersService,private navRouter:Router) {
   }
 
   ngOnInit(): void {
@@ -23,6 +23,9 @@ export class UserDetailsComponent implements OnInit {
   }
 
   deleteUser($event: MouseEvent) {
-    this.usersService.deleteUserById(this.user._id);
+    this.usersService.deleteUserById(this.user._id).subscribe((data)=>{
+        console.log(data)
+        this.navRouter.navigateByUrl("")
+    });
   }
 }

@@ -48,5 +48,14 @@ router.patch("/:id", async(req,res)=>{
     }
 })
 
+router.delete("/:id",async(req,res)=>{
+    try {
+        const result = await UserModel.deleteOne({_id:req.params.id})
+        res.json(result.nModified)
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(404)
+    }
+})
 
 module.exports = router
